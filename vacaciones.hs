@@ -38,7 +38,7 @@ data Turista = UnTurista{
     nivelEstres :: Number,
     nivelCansancio :: Number,
     idiomas :: [String]
-} Show
+} deriving Show
 
 data Oceano = UnOceano{
     marea :: String
