@@ -37,7 +37,6 @@ data Turista = UnTurista{
     nombre :: String,
     nivelEstres :: Number,
     nivelCansancio :: Number,
-    viajaSolo :: Bool,
     idiomas :: [String]
 } Show
 
@@ -57,8 +56,8 @@ cathi = UnTurista "Cathi" 15 15 True ["Aleman", "Catalan"]
 
 --------- Funciones de excursiones --------
 
-irPlaya :: Turista -> Turista
-irPlaya turista
+irPlaya :: Turista -> Bool -> Turista
+irPlaya turista viajaSolo
     | viajaSolo turista == True = turista {nivelCansancio = nivelCansancio - 5}
     | otherwise = turista {nivelEstres = nivelEstres - 1}
 
@@ -78,8 +77,8 @@ paseoEnBarco turista oceano
 
 
 
-deltaExcursionSegun ::
-deltaExcursionSegun
+deltaExcursionSegun :: (a -> b -> Int) -> Turista -> (a -> b -> a) -> Int
+deltaExcursionSegun datoTurista turista excursion = -- diferencia entre que numero tenia y cual tiene ahora
 
 
 ------- Funciones de ayuda -------
@@ -87,13 +86,6 @@ deltaExcursionSegun
 reducirDiezEstres :: Turista -> Turista
 reducirDiezEstres turista = turista {nivelEstres = nivelEstres*(0,90)}    -- Aplicar a cada turista que realiza una excursion --
 
-
-
-funcionA algo1 algo2 = algo1
-
-funcionB algo3 algo4 = algo4
-
-FuncionC algo1 algo3
-    | algo1 == "Manteca" = funcionA algo1 algo3, funcionB algo3 algo1
-    | otherwise = "No se"
-
+------- Funcion que me da lo que quiero saber del turista -----  (todavia no esta resuelta)
+datoTurista :: Turista -> Dato -> Int
+datoTurista turista dato = turista{dato}
